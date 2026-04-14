@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Лаборатория красоты</title>
+    <meta
+      name="description"
+      content="Сайт косметологической клиники «Лаборатория красоты»: услуги, специалисты, акции, портфолио и онлайн-запись."
+    />
+    <link rel="stylesheet" href="./assets/styles/main.css" />
+  </head>
+  <body>
+    <div class="page-noise" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Лаборатория красоты">
+        <img src="./assets/media/logo.svg" alt="" />
+        <span>
+          <strong>Лаборатория</strong>
+          <em>красоты</em>
+        </span>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="siteNav">
+        Меню
+      </button>
+
+      <nav class="site-nav" id="siteNav">
+        <a href="#services">Услуги</a>
+        <a href="#specialists">Специалисты</a>
+        <a href="#portfolio">Портфолио</a>
+        <a href="#reviews">Отзывы</a>
+        <a href="#promotions">Акции</a>
+        <a href="#contacts">Контакты</a>
+        <a href="./help.html">Помощь</a>
+        <a href="./admin.html">Админка</a>
+      </nav>
+
+      <button class="button button-primary button-header" type="button" data-open-booking>
+        Онлайн-запись
+      </button>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow" id="heroEyebrow"></div>
+          <h1 id="heroTitle"></h1>
+          <p id="heroText"></p>
+
+          <div class="hero-actions">
+            <a class="button button-primary" href="#services">Выбрать процедуру</a>
+            <button class="button button-secondary" type="button" data-open-booking>
+              Записаться в 5 шагов
+            </button>
+          </div>
+
+          <div class="hero-metrics" id="heroMetrics"></div>
+        </div>
+
+        <div class="hero-panel">
+          <article class="promo-card promo-card-main">
+            <div class="promo-badge">Сейчас в фокусе</div>
+            <h2 id="bannerTitle"></h2>
+            <p id="bannerText"></p>
+            <div class="promo-meta">
+              <span id="bannerLinkLabel"></span>
+              <a href="#promotions">Смотреть все акции</a>
+            </div>
+          </article>
+
+          <form class="quick-form glass-card" id="quickBookingForm">
+            <div class="section-tag">Быстрая запись</div>
+            <h2>Оставьте имя и телефон, а мы проведём вас до свободного слота</h2>
+
+            <label>
+              <span>Имя</span>
+              <input type="text" name="name" placeholder="Например, Алина" required />
+            </label>
+
+            <label>
+              <span>Телефон</span>
+              <input type="tel" name="phone" placeholder="+7 (900) 000-00-00" required />
+            </label>
+
+            <label>
+              <span>Интересующая услуга</span>
+              <select name="serviceId" id="quickServiceSelect" required></select>
+            </label>
+
+            <label class="checkbox">
+              <input type="checkbox" name="consent" required />
+              <span>Согласен на обработку персональных данных</span>
+            </label>
+
+            <button class="button button-primary" type="submit">Продолжить запись</button>
+          </form>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <div>
+            <div class="section-tag">Почему выбирают нас</div>
+            <h2>Клиника, в которой эстетика начинается с доверия</h2>
+          </div>
+        </div>
+        <div class="advantage-grid" id="advantageGrid"></div>
+      </section>
+
+      <section class="section" id="services">
+        <div class="section-head">
+          <div>
+            <div class="section-tag">Услуги</div>
+            <h2>Протоколы под запрос, а не под шаблон</h2>
+            <p>
+              Собрали сервисный каталог так, чтобы клиент быстро понял разницу между методиками,
+              стоимостью и ожидаемым результатом.
+            </p>
+          </div>
+        </div>
+
+        <div class="filter-bar" id="serviceFilters"></div>
+        <div class="service-grid" id="serviceGrid"></div>
+      </section>
+
+      <section class="section narrative-strip">
+        <div class="story-card">
+          <div class="section-tag">Как проходит запись</div>
+          <h2>От выбора процедуры до подтверждения без звонков и путаницы</h2>
+        </div>
+        <div class="step-grid">
+          <article class="step-card">
+            <strong>01</strong>
+            <h3>Выбор услуги</h3>
+            <p>Каталог помогает быстро сравнить процедуры, стоимость и длительность.</p>
+          </article>
+          <article class="step-card">
+            <strong>02</strong>
+            <h3>Подбор специалиста</h3>
+            <p>Показываем только тех врачей, кто реально ведёт выбранное направление.</p>
+          </article>
+          <article class="step-card">
+            <strong>03</strong>
+            <h3>Свободные слоты</h3>
+            <p>Календарь скрывает занятые окна и учитывает график специалиста.</p>
+          </article>
+          <article class="step-card">
+            <strong>04</strong>
+            <h3>Подтверждение</h3>
+            <p>Клиент оставляет контакты и получает запись в финальном шаге.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="specialists">
+        <div class="section-head">
+          <div>
+            <div class="section-tag">Специалисты</div>
+            <h2>Врачи, которые объясняют каждый шаг и не перегружают уход</h2>
+          </div>
+        </div>
+
+        <div class="specialist-grid" id="specialistGrid"></div>
+      </section>
+
+      <section class="section" id="portfolio">
+        <div class="section-head">
+          <div>
+            <div class="section-tag">Портфолио</div>
+            <h2>До/после в реальном ритме клиники</h2>
+            <p>Галерея демонстрирует направление результата, а не обещает универсальный эффект.</p>
+          </div>
+        </div>
+
+        <div class="filter-bar" id="portfolioFilters"></div>
+        <div class="portfolio-grid" id="portfolioGrid"></div>
+      </section>
+
+      <section class="section" id="reviews">
+        <div class="section-head">
+          <div>
+            <div class="section-tag">Отзывы</div>
+            <h2>Живые впечатления клиентов</h2>
+          </div>
+        </div>
+
+        <div class="review-layout">
+          <div class="review-grid" id="reviewGrid"></div>
+
+          <form class="glass-card review-form" id="reviewForm">
+            <div class="section-tag">Оставить отзыв</div>
+            <h3>После модерации отзыв появится на сайте</h3>
+
+            <label>
+              <span>Имя</span>
+              <input type="text" name="name" required />
+            </label>
+
+            <label>
+              <span>Оценка</span>
+              <select name="rating" required>
+                <option value="5">5</option>
+                <option value="4">4</option>
+                <option value="3">3</option>
+              </select>
+            </label>
+
+            <label>
+              <span>Текст</span>
+              <textarea name="text" rows="5" required></textarea>
+            </label>
+
+            <label>
+              <span>Фото результата, ссылка или подпись</span>
+              <input type="text" name="photoHint" placeholder="Необязательно" />
+            </label>
+
+            <button class="button button-primary" type="submit">Отправить отзыв</button>
+          </form>
+        </div>
+      </section>
+
+      <section class="section" id="promotions">
+        <div class="section-head">
+          <div>
+            <div class="section-tag">Акции</div>
+            <h2>Предложения, которые помогают войти в курс без лишнего риска</h2>
+          </div>
+        </div>
+
+        <div class="promotion-grid" id="promotionGrid"></div>
+      </section>
+
+      <section class="section contact-section" id="contacts">
+        <div class="section-head">
+          <div>
+            <div class="section-tag">Контакты</div>
+            <h2>Приезжайте по записи или задайте вопрос заранее</h2>
+          </div>
+        </div>
+
+        <div class="contact-layout">
+          <div class="contact-stack">
+            <article class="glass-card contact-card">
+              <h3>Клиника</h3>
+              <p id="contactAddress"></p>
+              <div class="contact-list">
+                <a id="contactPhone" href="#"></a>
+                <a id="contactEmail" href="#"></a>
+                <span id="contactHours"></span>
+              </div>
+            </article>
+
+            <article class="glass-card contact-card">
+              <h3>Важно до визита</h3>
+              <ul class="plain-list">
+                <li>Первая консультация включает разбор запроса и ограничений.</li>
+                <li>В день процедуры можно перенести визит через администратора.</li>
+                <li>
+                  Для всех форм действует
+                  <a href="./privacy.html">политика обработки персональных данных</a>.
+                </li>
+              </ul>
+            </article>
+
+            <article class="glass-card contact-card">
+              <h3>Для посетителей</h3>
+              <p>
+                Подготовили раздел с подсказками по записи, логике модерации отзывов и работе
+                сервиса.
+              </p>
+              <a class="button button-secondary" href="./help.html">Открыть помощь</a>
+            </article>
+          </div>
+
+          <div class="map-card">
+            <iframe
+              title="Карта клиники"
+              src="https://yandex.ru/map-widget/v1/?ll=37.599013%2C55.760304&z=14&l=map"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div>
+        <strong>Лаборатория красоты</strong>
+        <p>Косметологическая клиника с фокусом на деликатный результат и понятный сервис.</p>
+      </div>
+      <div class="footer-links">
+        <a href="./help.html">Помощь</a>
+        <a href="./privacy.html">Персональные данные</a>
+        <a href="./admin.html">Административная панель</a>
+      </div>
+    </footer>
+
+    <div class="modal" id="detailModal" aria-hidden="true">
+      <div class="modal-backdrop" data-close-modal></div>
+      <div class="modal-card detail-card">
+        <button class="modal-close" type="button" data-close-modal aria-label="Закрыть">
+          Закрыть
+        </button>
+        <div id="detailContent"></div>
+      </div>
+    </div>
+
+    <div class="modal" id="bookingModal" aria-hidden="true">
+      <div class="modal-backdrop" data-close-booking></div>
+      <div class="modal-card booking-card">
+        <button class="modal-close" type="button" data-close-booking aria-label="Закрыть">
+          Закрыть
+        </button>
+        <div class="booking-progress" id="bookingProgress"></div>
+        <div id="bookingStage"></div>
+        <div class="booking-actions">
+          <button class="button button-secondary" id="bookingBack" type="button">Назад</button>
+          <button class="button button-primary" id="bookingNext" type="button">Далее</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="toast-area" id="toastArea" aria-live="polite"></div>
+
+    <script src="./assets/js/data.js" defer></script>
+    <script src="./assets/js/store.js" defer></script>
+    <script src="./assets/js/app.js" defer></script>
+  </body>
+</html>

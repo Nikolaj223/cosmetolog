@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Политика персональных данных | Лаборатория красоты</title>
+    <link rel="stylesheet" href="./assets/styles/main.css" />
+  </head>
+  <body class="inner-page">
+    <div class="page-noise" aria-hidden="true"></div>
+
+    <header class="site-header compact-header">
+      <a class="brand" href="./index.html">
+        <img src="./assets/media/logo.svg" alt="" />
+        <span>
+          <strong>Лаборатория</strong>
+          <em>красоты</em>
+        </span>
+      </a>
+      <nav class="site-nav compact-nav">
+        <a href="./index.html">На сайт</a>
+        <a href="./help.html">Помощь</a>
+        <a href="./admin.html">Админка</a>
+      </nav>
+    </header>
+
+    <main class="inner-main">
+      <section class="inner-hero">
+        <div class="section-tag">Персональные данные</div>
+        <h1>Краткая политика обработки персональных данных</h1>
+        <p>
+          Эта версия сайта создана как учебный и демонстрационный проект. Ниже сформулирована
+          базовая логика работы с персональными данными в формах.
+        </p>
+      </section>
+
+      <section class="section policy-card glass-card">
+        <h2>1. Какие данные собираются</h2>
+        <p>Имя, телефон, e-mail, комментарий клиента, а также данные, оставленные в отзыве.</p>
+
+        <h2>2. Для чего они используются</h2>
+        <p>
+          Данные используются для оформления записи, обратной связи, подтверждения визита и
+          внутренней работы администратора клиники.
+        </p>
+
+        <h2>3. Где они хранятся</h2>
+        <p>
+          В демонстрационном режиме данные сохраняются локально в браузере через `localStorage`. В
+          production-версии требуется перенос в защищённую серверную базу данных.
+        </p>
+
+        <h2>4. Согласие пользователя</h2>
+        <p>
+          Все формы, где запрашиваются контактные данные, содержат обязательное согласие на
+          обработку персональных данных.
+        </p>
+
+        <h2>5. Удаление данных</h2>
+        <p>
+          В демонстрационной версии очистка данных возможна через сброс демо-данных в админке или
+          очистку данных сайта в браузере.
+        </p>
+      </section>
+    </main>
+  </body>
+</html>

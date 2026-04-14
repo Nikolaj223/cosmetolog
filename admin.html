@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Админка | Лаборатория красоты</title>
+    <meta
+      name="description"
+      content="Административная панель косметологической клиники «Лаборатория красоты»."
+    />
+    <link rel="stylesheet" href="./assets/styles/main.css" />
+    <link rel="stylesheet" href="./assets/styles/admin.css" />
+  </head>
+  <body class="admin-body">
+    <div class="admin-shell">
+      <aside class="admin-sidebar">
+        <a class="brand" href="./index.html">
+          <img src="./assets/media/logo.svg" alt="" />
+          <span>
+            <strong>Лаборатория</strong>
+            <em>красоты</em>
+          </span>
+        </a>
+
+        <div class="sidebar-copy">
+          <span class="section-tag">Административная часть</span>
+          <h1>Управление сайтом и записями</h1>
+          <p>
+            Панель рассчитана на учебную и демо-эксплуатацию: контент, отзывы, акции, расписание
+            и запись клиентов сохраняются в браузере.
+          </p>
+        </div>
+
+        <nav class="admin-nav" id="adminNav">
+          <button class="admin-nav-link is-active" type="button" data-panel-target="dashboard">
+            Дашборд
+          </button>
+          <button class="admin-nav-link" type="button" data-panel-target="services">Услуги</button>
+          <button class="admin-nav-link" type="button" data-panel-target="specialists">
+            Специалисты
+          </button>
+          <button class="admin-nav-link" type="button" data-panel-target="portfolio">
+            Портфолио
+          </button>
+          <button class="admin-nav-link" type="button" data-panel-target="reviews">Отзывы</button>
+          <button class="admin-nav-link" type="button" data-panel-target="promotions">Акции</button>
+          <button class="admin-nav-link" type="button" data-panel-target="appointments">
+            Записи
+          </button>
+          <button class="admin-nav-link" type="button" data-panel-target="schedule">
+            Расписание
+          </button>
+          <button class="admin-nav-link" type="button" data-panel-target="homepage">Главная</button>
+        </nav>
+
+        <div class="sidebar-actions">
+          <a class="button button-secondary" href="./index.html">Открыть сайт</a>
+          <button class="button button-secondary" id="resetDemoData" type="button">
+            Сбросить демо-данные
+          </button>
+        </div>
+      </aside>
+
+      <main class="admin-main">
+        <section class="login-screen" id="loginScreen">
+          <div class="login-card">
+            <div class="section-tag">Вход</div>
+            <h2>Авторизация администратора</h2>
+            <p>
+              Для демонстрации включён локальный логин. Учётные данные указаны в README и не
+              претендуют на production-безопасность.
+            </p>
+
+            <form id="loginForm" class="admin-form">
+              <label>
+                <span>Логин</span>
+                <input type="text" name="username" required />
+              </label>
+
+              <label>
+                <span>Пароль</span>
+                <input type="password" name="password" required />
+              </label>
+
+              <button class="button button-primary" type="submit">Войти</button>
+            </form>
+
+            <div class="login-hint">
+              <strong>Демо-доступ:</strong>
+              <span>admin / beauty-lab2026</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="admin-app" id="adminApp" hidden>
+          <header class="admin-topbar">
+            <div>
+              <div class="section-tag">Панель управления</div>
+              <h2>Контент, модерация и запись клиентов</h2>
+            </div>
+            <button class="button button-secondary" id="logoutButton" type="button">
+              Выйти
+            </button>
+          </header>
+
+          <section class="admin-panel is-active" data-panel="dashboard">
+            <div class="stats-grid" id="dashboardStats"></div>
+            <div class="dashboard-grid">
+              <article class="admin-card">
+                <div class="card-head">
+                  <h3>Последние записи</h3>
+                </div>
+                <div id="recentAppointments"></div>
+              </article>
+
+              <article class="admin-card">
+                <div class="card-head">
+                  <h3>Отзывы на модерации</h3>
+                </div>
+                <div id="pendingReviews"></div>
+              </article>
+            </div>
+          </section>
+
+          <section class="admin-panel" data-panel="services">
+            <div class="two-column-admin">
+              <article class="admin-card">
+                <div class="card-head">
+                  <h3>Добавить или редактировать услугу</h3>
+                </div>
+
+                <form class="admin-form" id="serviceForm">
+                  <input type="hidden" name="id" />
+                  <label>
+                    <span>Название</span>
+                    <input type="text" name="name" required />
+                  </label>
+
+                  <label>
+                    <span>Категория</span>
+                    <select name="categoryId" id="serviceCategorySelect" required></select>
+                  </label>
+
+                  <div class="compact-grid">
+                    <label>
+                      <span>Цена, ₽</span>
+                      <input type="number" name="price" min="0" required />
+                    </label>
+                    <label>
+                      <span>Длительность</span>
+                      <input type="text" name="duration" required />
+                    </label>
+                  </div>
+
+                  <label>
+                    <span>Короткое описание</span>
+                    <textarea name="teaser" rows="3" required></textarea>
+                  </label>
+
+                  <label>
+                    <span>Описание услуги</span>
+                    <textarea name="description" rows="5" required></textarea>
+                  </label>
+
+                  <label>
+                    <span>Показания, по одному на строку</span>
+                    <textarea name="indications" rows="4"></textarea>
+                  </label>
+
+                  <label>
+                    <span>Противопоказания, по одному на строку</span>
+                    <textarea name="contraindications" rows="4"></textarea>
+                  </label>
+
+                  <label>
+                    <span>Акцент на карточке</span>
+                    <input type="text" name="accent" required />
+                  </label>
+
+                  <label>
+                    <span>Специалисты</span>
+                    <select name="specialistIds" id="serviceSpecialistSelect" multiple size="6"></select>
+                  </label>
+
+                  <div class="form-actions">
+                    <button class="button button-primary" type="submit">Сохранить услугу</button>
+                    <button class="button button-secondary" id="serviceCancelEdit" type="button">
+                      Очистить форму
+                    </button>
+                  </div>
+                </form>
+              </article>
+
+              <div class="stacked-admin">
+                <article class="admin-card">
+                  <div class="card-head">
+                    <h3>Категории услуг</h3>
+                  </div>
+
+                  <form class="admin-form" id="categoryForm">
+                    <input type="hidden" name="id" />
+                    <label>
+                      <span>Название категории</span>
+                      <input type="text" name="name" required />
+                    </label>
+                    <label>
+                      <span>Описание</span>
+                      <textarea name="description" rows="3" required></textarea>
+                    </label>
+                    <div class="form-actions">
+                      <button class="button button-primary" type="submit">Сохранить категорию</button>
+                      <button class="button button-secondary" id="categoryCancelEdit" type="button">
+                        Очистить форму
+                      </button>
+                    </div>
+                  </form>
+                  <div id="categoryList" class="admin-list"></div>
+                </article>
+
+                <article class="admin-card">
+                  <div class="card-head">
+                    <h3>Текущий каталог</h3>
+                  </div>
+                  <div id="serviceList" class="admin-list"></div>
+                </article>
+              </div>
+            </div>
+          </section>
+
+          <section class="admin-panel" data-panel="specialists">
+            <div class="two-column-admin">
+              <article class="admin-card">
+                <div class="card-head">
+                  <h3>Карточка специалиста</h3>
+                </div>
+
+                <form class="admin-form" id="specialistForm">
+                  <input type="hidden" name="id" />
+                  <label>
+                    <span>ФИО</span>
+                    <input type="text" name="name" required />
+                  </label>
+
+                  <label>
+                    <span>Должность</span>
+                    <input type="text" name="role" required />
+                  </label>
+
+                  <div class="compact-grid">
+                    <label>
+                      <span>Стаж, лет</span>
+                      <input type="number" name="experience" min="0" required />
+                    </label>
+                    <label>
+                      <span>Короткий тезис</span>
+                      <input type="text" name="tagline" required />
+                    </label>
+                  </div>
+
+                  <label>
+                    <span>Описание</span>
+                    <textarea name="about" rows="5" required></textarea>
+                  </label>
+
+                  <label>
+                    <span>Образование и сертификаты, по одному на строку</span>
+                    <textarea name="education" rows="5"></textarea>
+                  </label>
+
+                  <label>
+                    <span>Фокус, по одному на строку</span>
+                    <textarea name="focus" rows="4"></textarea>
+                  </label>
+
+                  <label>
+                    <span>Изображение, ссылка или локальный SVG-путь</span>
+                    <input type="text" name="image" required />
+                  </label>
+
+                  <div class="form-actions">
+                    <button class="button button-primary" type="submit">
+                      Сохранить специалиста
+                    </button>
+                    <button class="button button-secondary" id="specialistCancelEdit" type="button">
+                      Очистить форму
+                    </button>
+                  </div>
+                </form>
+              </article>
+
+              <article class="admin-card">
+                <div class="card-head">
+                  <h3>Список специалистов</h3>
+                </div>
+                <div id="specialistList" class="admin-list"></div>
+              </article>
+            </div>
+          </section>
+
+          <section class="admin-panel" data-panel="portfolio">
+            <div class="two-column-admin">
+              <article class="admin-card">
+                <div class="card-head">
+                  <h3>Карточка портфолио</h3>
+                </div>
+
+                <form class="admin-form" id="portfolioForm">
+                  <input type="hidden" name="id" />
+
+                  <label>
+                    <span>Название кейса</span>
+                    <input type="text" name="title" required />
+                  </label>
+
+                  <label>
+                    <span>Услуга</span>
+                    <select name="serviceId" id="portfolioServiceSelect" required></select>
+                  </label>
+
+                  <label>
+                    <span>Специалист</span>
+                    <select name="specialistId" id="portfolioSpecialistSelect" required></select>
+                  </label>
+
+                  <label>
+                    <span>Описание результата</span>
+                    <textarea name="summary" rows="4" required></textarea>
+                  </label>
+
+                  <label>
+                    <span>Изображение, ссылка или локальный SVG-путь</span>
+                    <input type="text" name="image" required />
+                  </label>
+
+                  <div class="form-actions">
+                    <button class="button button-primary" type="submit">Сохранить кейс</button>
+                    <button class="button button-secondary" id="portfolioCancelEdit" type="button">
+                      Очистить форму
+                    </button>
+                  </div>
+                </form>
+              </article>
+
+              <article class="admin-card">
+                <div class="card-head">
+                  <h3>Галерея работ</h3>
+                </div>
+                <div id="portfolioList" class="admin-list"></div>
+              </article>
+            </div>
+          </section>
+
+          <section class="admin-panel" data-panel="reviews">
+            <article class="admin-card">
+              <div class="card-head">
+                <h3>Модерация отзывов</h3>
+              </div>
+              <div id="reviewModerationList" class="admin-list"></div>
+            </article>
+          </section>
+
+          <section class="admin-panel" data-panel="promotions">
+            <div class="two-column-admin">
+              <article class="admin-card">
+                <div class="card-head">
+                  <h3>Акция или спецпредложение</h3>
+                </div>
+
+                <form class="admin-form" id="promotionForm">
+                  <input type="hidden" name="id" />
+
+                  <label>
+                    <span>Название</span>
+                    <input type="text" name="title" required />
+                  </label>
+
+                  <label>
+                    <span>Бейдж</span>
+                    <input type="text" name="badge" required />
+                  </label>
+
+                  <label>
+                    <span>Описание</span>
+                    <textarea name="description" rows="5" required></textarea>
+                  </label>
+
+                  <label>
+                    <span>Условия</span>
+                    <textarea name="terms" rows="4" required></textarea>
+                  </label>
+
+                  <label>
+                    <span>Дата окончания</span>
+                    <input type="date" name="validUntil" required />
+                  </label>
+
+                  <div class="form-actions">
+                    <button class="button button-primary" type="submit">Сохранить акцию</button>
+                    <button class="button button-secondary" id="promotionCancelEdit" type="button">
+                      Очистить форму
+                    </button>
+                  </div>
+                </form>
+              </article>
+
+              <article class="admin-card">
+                <div class="card-head">
+                  <h3>Текущие акции</h3>
+                </div>
+                <div id="promotionList" class="admin-list"></div>
+              </article>
+            </div>
+          </section>
+
+          <section class="admin-panel" data-panel="appointments">
+            <article class="admin-card">
+              <div class="card-head">
+                <h3>Все записи</h3>
+                <button class="button button-secondary" id="exportAppointments" type="button">
+                  Экспорт в CSV
+                </button>
+              </div>
+
+              <div class="filter-toolbar">
+                <label>
+                  <span>Статус</span>
+                  <select id="appointmentStatusFilter">
+                    <option value="all">Все</option>
+                    <option value="new">Новые</option>
+                    <option value="confirmed">Подтверждённые</option>
+                    <option value="cancelled">Отменённые</option>
+                  </select>
+                </label>
+
+                <label>
+                  <span>Специалист</span>
+                  <select id="appointmentSpecialistFilter"></select>
+                </label>
+
+                <label>
+                  <span>Дата</span>
+                  <input id="appointmentDateFilter" type="date" />
+                </label>
+              </div>
+
+              <div id="appointmentTable"></div>
+            </article>
+          </section>
+
+          <section class="admin-panel" data-panel="schedule">
+            <article class="admin-card">
+              <div class="card-head">
+                <h3>Графики специалистов</h3>
+              </div>
+              <div id="scheduleList" class="schedule-list"></div>
+            </article>
+          </section>
+
+          <section class="admin-panel" data-panel="homepage">
+            <article class="admin-card">
+              <div class="card-head">
+                <h3>Контент главной страницы</h3>
+              </div>
+
+              <form class="admin-form" id="homepageForm">
+                <label>
+                  <span>Надзаголовок hero</span>
+                  <input type="text" name="eyebrow" required />
+                </label>
+
+                <label>
+                  <span>Главный заголовок</span>
+                  <textarea name="title" rows="3" required></textarea>
+                </label>
+
+                <label>
+                  <span>Описание</span>
+                  <textarea name="text" rows="4" required></textarea>
+                </label>
+
+                <div class="compact-grid">
+                  <label>
+                    <span>Заголовок баннера</span>
+                    <input type="text" name="bannerTitle" required />
+                  </label>
+                  <label>
+                    <span>Подпись ссылки</span>
+                    <input type="text" name="bannerLinkLabel" required />
+                  </label>
+                </div>
+
+                <label>
+                  <span>Текст баннера</span>
+                  <textarea name="bannerText" rows="4" required></textarea>
+                </label>
+
+                <label>
+                  <span>Преимущества, по одному на строку, формат `Заголовок | Текст`</span>
+                  <textarea name="advantages" rows="6" required></textarea>
+                </label>
+
+                <div class="form-actions">
+                  <button class="button button-primary" type="submit">
+                    Сохранить главную страницу
+                  </button>
+                </div>
+              </form>
+            </article>
+          </section>
+        </section>
+      </main>
+    </div>
+
+    <div class="toast-area" id="adminToastArea" aria-live="polite"></div>
+
+    <script src="./assets/js/data.js" defer></script>
+    <script src="./assets/js/store.js" defer></script>
+    <script src="./assets/js/admin.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,17 @@
+<svg width="960" height="560" viewBox="0 0 960 560" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="960" height="560" rx="40" fill="#F6EEE9"/>
+  <rect x="32" y="32" width="416" height="496" rx="28" fill="#DCC8BB"/>
+  <rect x="512" y="32" width="416" height="496" rx="28" fill="#F2DED0"/>
+  <circle cx="240" cy="214" r="84" fill="#CDA58E"/>
+  <circle cx="720" cy="214" r="84" fill="#DEB59D"/>
+  <path d="M166 382C176 298 214 256 242 256C270 256 308 298 318 382H166Z" fill="#7A5A50"/>
+  <path d="M642 382C654 292 692 252 720 252C748 252 786 292 798 382H642Z" fill="#8F6558"/>
+  <circle cx="216" cy="198" r="10" fill="#B37866"/>
+  <circle cx="254" cy="224" r="12" fill="#B37866"/>
+  <circle cx="226" cy="244" r="8" fill="#B37866"/>
+  <circle cx="700" cy="198" r="5" fill="#EED2C4"/>
+  <circle cx="736" cy="224" r="6" fill="#EED2C4"/>
+  <circle cx="710" cy="244" r="5" fill="#EED2C4"/>
+  <text x="78" y="88" fill="#6C4A3F" font-family="Manrope, sans-serif" font-size="28" font-weight="700">До</text>
+  <text x="560" y="88" fill="#6C4A3F" font-family="Manrope, sans-serif" font-size="28" font-weight="700">После</text>
+</svg>

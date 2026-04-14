@@ -1,0 +1,13 @@
+<svg width="960" height="560" viewBox="0 0 960 560" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="960" height="560" rx="40" fill="#EEF4EF"/>
+  <rect x="32" y="32" width="416" height="496" rx="28" fill="#D2DDD4"/>
+  <rect x="512" y="32" width="416" height="496" rx="28" fill="#E8F0EA"/>
+  <circle cx="240" cy="214" r="84" fill="#D7B49D"/>
+  <circle cx="720" cy="214" r="84" fill="#E9C8AF"/>
+  <path d="M166 382C176 298 214 256 242 256C270 256 308 298 318 382H166Z" fill="#7D9580"/>
+  <path d="M642 382C654 292 692 252 720 252C748 252 786 292 798 382H642Z" fill="#8DA18E"/>
+  <circle cx="240" cy="214" r="70" fill="none" stroke="#8BA59A" stroke-width="12" stroke-dasharray="6 18"/>
+  <circle cx="720" cy="214" r="70" fill="none" stroke="#C97860" stroke-width="12" stroke-dasharray="6 18"/>
+  <text x="78" y="88" fill="#5D7260" font-family="Manrope, sans-serif" font-size="28" font-weight="700">До</text>
+  <text x="560" y="88" fill="#5D7260" font-family="Manrope, sans-serif" font-size="28" font-weight="700">После</text>
+</svg>
