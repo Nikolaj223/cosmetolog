@@ -1,11 +1,25 @@
 (function () {
   const Seed = window.BeautyLabSeed;
   const Store = window.BeautyLabStore;
+  const Shell = window.BeautyLabHomeShell;
+  const Helpers = window.BeautyLabHomeHelpers;
+
+  if (Shell) {
+    Shell.mountHomePage(document.getElementById("siteShell"));
+  }
+
   const page = document.getElementById("serviceGrid");
 
-  if (!Seed || !Store || !page) {
+  if (!Seed || !Store || !page || !Helpers) {
     return;
   }
+
+  const createBookingState = Helpers.createBookingState;
+  const escapeHtml = Helpers.escapeHtml;
+  const formatDate = Helpers.formatDate;
+  const formatShortDate = Helpers.formatShortDate;
+  const createEmptyState = Helpers.createEmptyState;
+  const stars = Helpers.stars;
 
   let state = Store.getState();
   let serviceFilter = "all";
@@ -54,46 +68,6 @@
     "Контакты",
     "Подтверждение",
   ];
-
-  function createBookingState() {
-    return {
-      step: 1,
-      serviceId: "",
-      specialistId: "",
-      date: "",
-      time: "",
-      client: {
-        fullName: "",
-        phone: "",
-        email: "",
-        comment: "",
-        consent: false,
-      },
-    };
-  }
-
-  function escapeHtml(value) {
-    return String(value || "")
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;");
-  }
-
-  function formatDate(value) {
-    return new Intl.DateTimeFormat("ru-RU", {
-      day: "numeric",
-      month: "long",
-      weekday: "short",
-    }).format(new Date(value + "T12:00:00"));
-  }
-
-  function formatShortDate(value) {
-    return new Intl.DateTimeFormat("ru-RU", {
-      day: "numeric",
-      month: "short",
-    }).format(new Date(value + "T12:00:00"));
-  }
 
   function getCategory(id) {
     return state.categories.find(function (item) {
@@ -175,14 +149,6 @@
       });
     }
     return dates;
-  }
-
-  function createEmptyState(message) {
-    return '<div class="empty-state">' + escapeHtml(message) + "</div>";
-  }
-
-  function stars(rating) {
-    return "★".repeat(Number(rating || 0)) + "☆".repeat(Math.max(0, 5 - Number(rating || 0)));
   }
 
   function showToast(message) {
